@@ -1,5 +1,4 @@
 import { StarterProject } from '/#/abi/project';
-import classNames from './index.module.less';
 
 export type ProjectItemProps = {
   item: StarterProject;
@@ -7,12 +6,12 @@ export type ProjectItemProps = {
 
 export function ProjectItem({ item }: ProjectItemProps) {
   return (
-    <div className={classNames['project-item']}>
+    <div className='flex p-6 items-center'>
       <div>
         <img src={item.icon} />
       </div>
-      <div>
-        <div>
+      <div className='p-2 flex-1'>
+        <div className='flex justify-between flex-row items-center '>
           <div>{item.name}</div>
           <div>打开</div>
         </div>
