@@ -1,0 +1,1 @@
+export { projectCommand } from './command';

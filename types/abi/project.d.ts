@@ -6,4 +6,6 @@ export type StarterProject = {
   createAt: number;
   updateAt: number;
   icon: string;
+  name: string;
+  description: string;
 };
