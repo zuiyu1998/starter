@@ -1,5 +1,5 @@
 import { useRef, useImperativeHandle, forwardRef } from 'react';
-import animationData from '/@/assets/lottie/loading.json';
+import animationData from '/@/assets/lotties/loading.json';
 import { Player } from '@lottiefiles/react-lottie-player';
 
 export interface LoadingLottieRef {
