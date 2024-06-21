@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
-import { LoadingLottie, LoadingLottieRef } from './views/sys/Loading';
+import { LoadingLottie, LoadingLottieRef } from './views/sys/loading';
 
 import { initStore } from '/@/store/index';
+import { Router } from './router';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [target] = useState(5);
+  const [target] = useState(1);
 
   const playerRef = useRef<LoadingLottieRef | null>(null);
 
@@ -44,7 +45,7 @@ function App() {
     );
   }
 
-  return <div>main</div>;
+  return <Router />;
 }
 
 export default App;
