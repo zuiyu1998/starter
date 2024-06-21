@@ -28,6 +28,7 @@ function App() {
 
   useEffect(() => {
     async function bootstrap() {
+      //初始化store
       await initStore();
       setCount((pre) => pre + 1);
     }
