@@ -11,17 +11,19 @@ export function Dashboard() {
       try {
         const res = await projectCommand.getProjectList();
 
+        console.log(res);
+
         setList(res.data);
       } catch (error) {}
     }
 
     getData();
-  });
+  }, []);
 
   return (
     <div>
       {list.map((item) => {
-        return <ProjectItem item={item} key={item.id} />;
+        return <ProjectItem item={item} key={item.meta.uuid} />;
       })}
     </div>
   );

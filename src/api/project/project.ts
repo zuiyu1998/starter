@@ -3,4 +3,5 @@ import { PageListResponse } from '../baseModel';
 
 export interface ProjectRepo {
   getProjectList(): Promise<PageListResponse<StarterProject>>;
+  executeProject(uuid: string): Promise<void>;
 }

@@ -5,6 +5,8 @@ export type StarterProjectMeta = {
   createAt: number;
   updateAt: number;
   icon: string;
+  name: string;
+  description: string;
 };
 
 export type Executer = any;

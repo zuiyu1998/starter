@@ -1,26 +1,17 @@
+import { PageListResponse } from './../baseModel';
+import { invoke } from '@tauri-apps/api/core';
 import { ProjectRepo } from './project';
+import { StarterProject } from '/#/abi/project';
 
 async function getProjectList() {
-  return {
-    data: [
-      {
-        id: 1,
-        path: 'test',
-        exePath: 'test',
-        uuid: 'test',
-        createAt: 1,
-        updateAt: 1,
-        icon: 'test',
-        name: 'test',
-        description: 'test',
-      },
-    ],
-    has_next: false,
-    page_size: 50,
-    page: 10,
-  };
+  return (await invoke('get_project_list')) as PageListResponse<StarterProject>;
+}
+
+async function executeProject(uuid: string) {
+  await invoke('excute_project', { uuid: uuid });
 }
 
 export const projectCommand: ProjectRepo = {
   getProjectList: getProjectList,
+  executeProject: executeProject,
 };

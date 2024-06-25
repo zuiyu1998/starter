@@ -1,6 +1,7 @@
 export type PageListResponse<T> = {
   data: T[];
-  has_next: boolean;
+  has_next?: boolean;
   page_size: number;
   page: number;
+  count: number;
 };
