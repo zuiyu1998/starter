@@ -2,6 +2,9 @@ import { StarterProject } from '/#/abi/project';
 import { PageListResponse } from '../baseModel';
 
 export interface ProjectRepo {
-  getProjectList(): Promise<PageListResponse<StarterProject>>;
+  getProjectList(
+    page: number,
+    page_size: number
+  ): Promise<PageListResponse<StarterProject>>;
   executeProject(uuid: string): Promise<void>;
 }

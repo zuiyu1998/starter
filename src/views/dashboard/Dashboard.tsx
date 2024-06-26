@@ -9,7 +9,7 @@ export function Dashboard() {
   useEffect(() => {
     async function getData() {
       try {
-        const res = await projectCommand.getProjectList();
+        const res = await projectCommand.getProjectList(1, 50);
 
         console.log(res);
 

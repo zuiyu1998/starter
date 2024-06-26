@@ -2,13 +2,17 @@ use crate::{error::Result, AppState};
 use api::abi::{prelude::*, uuid::Uuid};
 use tauri::{command, State};
 
-#[command]
+#[command(rename_all = "snake_case")]
 pub async fn get_project_list(
+    page: i32,
+    page_size: i32,
     app_state: State<'_, AppState>,
 ) -> Result<StarterProjectListResponse> {
     let app_state = app_state.inner();
 
-    let res = app_state.get_project_list().await?;
+    let res = app_state
+        .get_project_list(GetProjectListParams { page, page_size })
+        .await?;
 
     Ok(res)
 }
