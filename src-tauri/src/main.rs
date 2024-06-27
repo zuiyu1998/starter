@@ -21,6 +21,7 @@ async fn main() {
         .manage(state)
         .invoke_handler(tauri::generate_handler![
             project::get_project_list,
+            project::create_project,
             project::excute_project
         ])
         .run(tauri::generate_context!())
