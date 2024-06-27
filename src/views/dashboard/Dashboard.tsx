@@ -12,7 +12,7 @@ type FieldType = StarterProjectCreate;
 export function Dashboard() {
   const [list, setList] = useState<StarterProject[]>([]);
 
-  const [executerOptions] = useState([{ label: '环境变量', value: 1 }]);
+  const [executerOptions] = useState([{ label: '环境变量', value: 2 }]);
 
   const [form] = Form.useForm<FieldType>();
 

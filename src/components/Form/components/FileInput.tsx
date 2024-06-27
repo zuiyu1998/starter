@@ -2,18 +2,28 @@ import { Input } from 'antd';
 import type { InputRef } from 'antd';
 import { ChangeEvent, useRef, useState } from 'react';
 import { open } from '@tauri-apps/plugin-dialog';
+import { isFunction } from 'lodash-es';
 
 export type FileInputProps = {
   value?: string;
-  onChange?: (count: number) => void;
+  onChange?: (count: string) => void;
 };
 
 export function FileInput(props: FileInputProps) {
   const [value, setValue] = useState<string | undefined>(props.value);
 
   const inputRef = useRef<InputRef>(null);
+
+  function changeValue(newValue: string) {
+    setValue(newValue);
+
+    if (isFunction(props.onChange)) {
+      props.onChange(newValue);
+    }
+  }
+
   function onChange(e: ChangeEvent<HTMLInputElement>) {
-    setValue(e.target.value);
+    changeValue(e.target.value);
   }
 
   async function onFocus() {
@@ -25,7 +35,7 @@ export function FileInput(props: FileInputProps) {
       });
 
       if (selectd) {
-        setValue(selectd);
+        changeValue(selectd);
       }
     } catch (error) {}
   }
