@@ -5,6 +5,7 @@ import { ProjectItem } from './ProjectItem';
 
 import { FloatButton, Form, Input, Select } from 'antd';
 import { BaseModal, useModal } from '/@/components/Modal';
+import { FileInput } from '/@/components/Form/components/FileInput';
 
 type FieldType = StarterProjectCreate;
 
@@ -92,7 +93,7 @@ export function Dashboard() {
             name='path'
             rules={[{ required: true, message: '请输入项目路径' }]}
           >
-            <Input />
+            <FileInput />
           </Form.Item>
 
           <Form.Item<FieldType>
