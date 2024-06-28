@@ -16,5 +16,6 @@ tauri-plugin-shell = "2.0.0-beta"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 
-api = { git = "https://github.com/zuiyu1998/starter-backend.git" }
+api = { git = "https://github.com/zuiyu1998/starter-backend.git", branch = "main" }
+
 tauri-plugin-dialog = "2.0.0-beta.9"

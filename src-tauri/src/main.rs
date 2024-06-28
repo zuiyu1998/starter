@@ -23,6 +23,7 @@ async fn main() {
         .invoke_handler(tauri::generate_handler![
             project::get_project_list,
             project::create_project,
+            project::delete_project,
             project::excute_project
         ])
         .run(tauri::generate_context!())

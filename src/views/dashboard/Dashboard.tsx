@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { StarterProject, StarterProjectCreate } from '/#/abi/project';
-import { projectCommand } from '/@/api/project';
 import { ProjectItem } from './ProjectItem';
 
 import { FloatButton, Form, Input, Select } from 'antd';
 import { BaseModal, useModal } from '/@/components/Modal';
 import { FileInput } from '/@/components/Form/components/FileInput';
+import { projectCommand } from '/@/api/project';
 
 type FieldType = StarterProjectCreate;
 
@@ -47,11 +47,30 @@ export function Dashboard() {
     openModal();
   }
 
+  async function onOpen(uuid: string) {
+    try {
+      await projectCommand.executeProject(uuid);
+    } catch (error) {}
+  }
+  async function onDelete(uuid: string) {
+    try {
+      await projectCommand.deleteProject(uuid);
+      await _getData();
+    } catch (error) {}
+  }
+
   return (
     <div>
       <div>
         {list.map((item) => {
-          return <ProjectItem item={item} key={item.meta.uuid} />;
+          return (
+            <ProjectItem
+              item={item}
+              key={item.meta.uuid}
+              onOpen={onOpen}
+              onDelete={onDelete}
+            />
+          );
         })}
       </div>
       <FloatButton onClick={onAdd}>添加</FloatButton>

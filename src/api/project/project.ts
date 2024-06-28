@@ -8,4 +8,5 @@ export interface ProjectRepo {
   ): Promise<PageListResponse<StarterProject>>;
   executeProject(uuid: string): Promise<void>;
   createProject(create: StarterProjectCreate): Promise<void>;
+  deleteProject(uuid: string): Promise<void>;
 }

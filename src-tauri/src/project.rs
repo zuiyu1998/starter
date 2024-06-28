@@ -3,6 +3,15 @@ use api::abi::{prelude::*, uuid::Uuid};
 use tauri::{command, State};
 
 #[command(rename_all = "snake_case")]
+pub async fn delete_project(uuid: Uuid, app_state: State<'_, AppState>) -> Result<()> {
+    let app_state = app_state.inner();
+
+    app_state.delete_project(uuid).await?;
+
+    Ok(())
+}
+
+#[command(rename_all = "snake_case")]
 pub async fn create_project(
     create: StarterProjectCreate,
     app_state: State<'_, AppState>,

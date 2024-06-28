@@ -14,6 +14,10 @@ async function executeProject(uuid: string) {
   await invoke('excute_project', { uuid: uuid });
 }
 
+async function deleteProject(uuid: string) {
+  await invoke('delete_project', { uuid: uuid });
+}
+
 async function createProject(create: StarterProjectCreate) {
   await invoke('create_project', { create });
 }
@@ -22,4 +26,5 @@ export const projectCommand: ProjectRepo = {
   getProjectList: getProjectList,
   executeProject: executeProject,
   createProject: createProject,
+  deleteProject: deleteProject,
 };
