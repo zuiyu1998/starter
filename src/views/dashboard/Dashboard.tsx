@@ -6,6 +6,7 @@ import { FloatButton, Form, Input, Select } from 'antd';
 import { BaseModal, useModal } from '/@/components/Modal';
 import { FileInput } from '/@/components/Form/components/FileInput';
 import { projectCommand } from '/@/api/project';
+import { FolderAddOutlined } from '@ant-design/icons';
 
 type FieldType = StarterProjectCreate;
 
@@ -60,8 +61,8 @@ export function Dashboard() {
   }
 
   return (
-    <div>
-      <div>
+    <div className='h-full w-full bg-slate-50'>
+      <div className='py-4'>
         {list.map((item) => {
           return (
             <ProjectItem
@@ -73,7 +74,9 @@ export function Dashboard() {
           );
         })}
       </div>
-      <FloatButton onClick={onAdd}>添加</FloatButton>
+      <FloatButton icon={<FolderAddOutlined />} onClick={onAdd}>
+        添加
+      </FloatButton>
 
       <BaseModal register={register} onOk={onFinish}>
         <Form

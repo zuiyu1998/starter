@@ -4,6 +4,17 @@ import { LoadingLottie, LoadingLottieRef } from './views/sys/loading';
 
 import { initStore } from '/@/store/index';
 import { Router } from './router';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/locale/zh_CN';
+import 'dayjs/locale/zh-cn';
+
+function Main() {
+  return (
+    <ConfigProvider locale={zhCN}>
+      <Router />
+    </ConfigProvider>
+  );
+}
 
 function App() {
   const [count, setCount] = useState(0);
@@ -45,7 +56,7 @@ function App() {
     );
   }
 
-  return <Router />;
+  return <Main />;
 }
 
 export default App;

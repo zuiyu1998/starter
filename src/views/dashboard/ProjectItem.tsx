@@ -1,6 +1,8 @@
 import { StarterProject } from '/#/abi/project';
 import { Icon } from '/@/components/Icon';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
+
+import { FolderOpenOutlined, DeleteOutlined } from '@ant-design/icons';
 
 export type ProjectItemProps = {
   item: StarterProject;
@@ -10,29 +12,32 @@ export type ProjectItemProps = {
 
 export function ProjectItem({ item, onOpen, onDelete }: ProjectItemProps) {
   return (
-    <div className='flex p-6 items-center'>
+    <div className='flex p-6 items-center bg-white mx-4 rounded-lg'>
       <div>
-        <Icon icon='godot' />
+        <Icon icon='godot' size={40} />
       </div>
-      <div className='p-2 flex-1'>
-        <div className='flex justify-between flex-row items-center '>
-          <div>{item.meta.name}</div>
+      <div className='p-4 flex-1 flex flex-row items-center justify-between'>
+        <div>
+          <div className='text-black text-lg'>{item.meta.name}</div>
+          <div className='text-slate-400 text-xs'>{item.meta.description}</div>
+        </div>
+
+        <Space>
           <Button
+            type='primary'
+            icon={<FolderOpenOutlined />}
             onClick={() => {
               onOpen(item.meta.uuid);
             }}
-          >
-            打开
-          </Button>
+          ></Button>
           <Button
+            danger
+            icon={<DeleteOutlined />}
             onClick={() => {
               onDelete(item.meta.uuid);
             }}
-          >
-            删除
-          </Button>
-        </div>
-        <div>{item.meta.description}</div>
+          ></Button>
+        </Space>
       </div>
     </div>
   );
