@@ -23,4 +23,5 @@ export type StarterProjectCreate = {
   name: string;
   description: string;
   executer: number;
+  tags: string;
 };

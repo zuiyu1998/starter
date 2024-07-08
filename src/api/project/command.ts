@@ -3,10 +3,11 @@ import { invoke } from '@tauri-apps/api/core';
 import { ProjectRepo } from './project';
 import { StarterProject, StarterProjectCreate } from '/#/abi/project';
 
-async function getProjectList(page: number, page_size: number) {
+async function getProjectList(page: number, page_size: number, tags?: string) {
   return (await invoke('get_project_list', {
     page,
     page_size,
+    tags,
   })) as PageListResponse<StarterProject>;
 }
 

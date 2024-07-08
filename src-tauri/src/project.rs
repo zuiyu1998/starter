@@ -27,12 +27,17 @@ pub async fn create_project(
 pub async fn get_project_list(
     page: i32,
     page_size: i32,
+    tags: Option<String>,
     app_state: State<'_, AppState>,
 ) -> Result<StarterProjectListResponse> {
     let app_state = app_state.inner();
 
     let res = app_state
-        .get_project_list(GetProjectListParams { page, page_size })
+        .get_project_list(GetProjectListParams {
+            page,
+            page_size,
+            tags,
+        })
         .await?;
 
     Ok(res)

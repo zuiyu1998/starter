@@ -111,6 +111,14 @@ export function Dashboard() {
           </Form.Item>
 
           <Form.Item<FieldType>
+            label='标签'
+            name='tags'
+            rules={[{ required: true, message: '请输入图标' }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType>
             label='项目路径'
             name='path'
             rules={[{ required: true, message: '请输入项目路径' }]}
