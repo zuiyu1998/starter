@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
+    "@handy-common-utils/promise-utils": "^1.6.0",
     "@lottiefiles/react-lottie-player": "^3.5.4",
     "@tauri-apps/api": ">=2.0.0-beta.0",
     "@tauri-apps/plugin-dialog": "2.0.0-beta.5",

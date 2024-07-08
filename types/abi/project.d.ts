@@ -25,3 +25,8 @@ export type StarterProjectCreate = {
   executer: number;
   tags: string;
 };
+
+export type ExecuterOption = {
+  executer: number;
+  name: string;
+};

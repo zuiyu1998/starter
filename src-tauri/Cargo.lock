@@ -5,7 +5,7 @@ version = 3
 [[package]]
 name = "abi"
 version = "0.1.0"
-source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#25896f36e6b4f70d4d242451c1f1e865b64d10f7"
+source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#7e8709e977ea24e8046574d66c4965f0fa6efb1e"
 dependencies = [
  "async-trait",
  "chrono",
@@ -168,7 +168,7 @@ checksum = "b3d1d046238990b9cf5bcde22a3fb3584ee5cf65fb2765f454ed428c7a0063da"
 [[package]]
 name = "api"
 version = "0.1.0"
-source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#25896f36e6b4f70d4d242451c1f1e865b64d10f7"
+source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#7e8709e977ea24e8046574d66c4965f0fa6efb1e"
 dependencies = [
  "abi",
  "db",
@@ -1188,7 +1188,7 @@ dependencies = [
 [[package]]
 name = "db"
 version = "0.1.0"
-source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#25896f36e6b4f70d4d242451c1f1e865b64d10f7"
+source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#7e8709e977ea24e8046574d66c4965f0fa6efb1e"
 dependencies = [
  "abi",
  "entity",
@@ -1314,7 +1314,7 @@ dependencies = [
 [[package]]
 name = "doc_index"
 version = "0.1.0"
-source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#25896f36e6b4f70d4d242451c1f1e865b64d10f7"
+source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#7e8709e977ea24e8046574d66c4965f0fa6efb1e"
 dependencies = [
  "abi",
  "tantivy",
@@ -1416,7 +1416,7 @@ checksum = "a3d8a32ae18130a3c84dd492d4215c3d913c3b07c6b63c2eb3eb7ff1101ab7bf"
 [[package]]
 name = "entity"
 version = "0.1.0"
-source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#25896f36e6b4f70d4d242451c1f1e865b64d10f7"
+source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#7e8709e977ea24e8046574d66c4965f0fa6efb1e"
 dependencies = [
  "abi",
 ]
@@ -2803,7 +2803,7 @@ dependencies = [
 [[package]]
 name = "migration"
 version = "0.1.0"
-source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#25896f36e6b4f70d4d242451c1f1e865b64d10f7"
+source = "git+https://github.com/zuiyu1998/starter-backend.git?branch=main#7e8709e977ea24e8046574d66c4965f0fa6efb1e"
 dependencies = [
  "async-std",
  "entity",

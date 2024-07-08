@@ -7,6 +7,7 @@ import { Router } from './router';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import 'dayjs/locale/zh-cn';
+import { timeout } from './utils/promise_utils';
 
 function Main() {
   return (
@@ -21,14 +22,7 @@ function App() {
   const [target] = useState(1);
 
   const playerRef = useRef<LoadingLottieRef | null>(null);
-
-  const loading = useMemo(() => {
-    if (count >= target) {
-      return false;
-    } else {
-      return true;
-    }
-  }, [count, target]);
+  const [loading, setLoading] = useState(true);
 
   const progress = useMemo(() => {
     return (count / target) * 100;
@@ -45,7 +39,21 @@ function App() {
       setCount((pre) => pre + 1);
     }
 
-    bootstrap();
+    async function delay() {
+      return await timeout(1000);
+    }
+
+    async function init() {
+      try {
+        await Promise.all([bootstrap(), delay()]);
+
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    init();
   }, []);
 
   if (loading) {

@@ -1,4 +1,8 @@
-import { StarterProject, StarterProjectCreate } from '/#/abi/project';
+import {
+  StarterProject,
+  StarterProjectCreate,
+  ExecuterOption,
+} from '/#/abi/project';
 import { PageListResponse } from '../baseModel';
 
 export interface ProjectRepo {
@@ -10,4 +14,5 @@ export interface ProjectRepo {
   executeProject(uuid: string): Promise<void>;
   createProject(create: StarterProjectCreate): Promise<void>;
   deleteProject(uuid: string): Promise<void>;
+  getExecuterOptions(): Promise<ExecuterOption[]>;
 }

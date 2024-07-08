@@ -12,7 +12,7 @@ export type ProjectItemProps = {
   item: StarterProject;
   onOpen(uuid: string): Promise<void>;
   onDelete(uuid: string): Promise<void>;
-  onEdit(item: StarterProject): Promise<void>;
+  onEdit(item: StarterProject): void;
 };
 
 export function ProjectItem({

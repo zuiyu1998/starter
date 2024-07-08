@@ -1,6 +1,13 @@
-use crate::{error::Result, AppState};
+use crate::{dto::ExecuterOptions, error::Result, AppState};
 use api::abi::{prelude::*, uuid::Uuid};
 use tauri::{command, State};
+
+#[command(rename_all = "snake_case")]
+pub async fn get_executer_options() -> Result<ExecuterOptions> {
+    let data = AppState::get_executer_options().await?;
+
+    Ok(ExecuterOptions(data))
+}
 
 #[command(rename_all = "snake_case")]
 pub async fn delete_project(uuid: Uuid, app_state: State<'_, AppState>) -> Result<()> {

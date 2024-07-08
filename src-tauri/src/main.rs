@@ -1,6 +1,7 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+mod dto;
 mod error;
 mod project;
 
@@ -24,7 +25,8 @@ async fn main() {
             project::get_project_list,
             project::create_project,
             project::delete_project,
-            project::excute_project
+            project::excute_project,
+            project::get_executer_options,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
