@@ -10,3 +10,5 @@ function lazy(importFn: Function) {
 export const icons = {
   godot: lazy(async () => import('../../assets/icons/godot.svg?react')),
 };
+
+export const iconData = Object.keys(icons);
