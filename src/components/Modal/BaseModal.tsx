@@ -2,10 +2,10 @@ import { Modal, ModalProps } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 
 export type BaseModelProps = ModalProps & {
-  register?: (method: ModalMethod) => void;
+  register?: (method: ModalInnerMethod) => void;
 };
 
-export interface ModalMethod {
+export interface ModalInnerMethod {
   openModal(): void;
   closeModal(): void;
 }

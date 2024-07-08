@@ -1,15 +1,32 @@
-import { BaseModal, BaseModelProps } from '/@/components/Modal';
+import { BaseModal, CustomModelProps } from '/@/components/Modal';
 import { FileInput } from '/@/components/Form/components/FileInput';
 import { useState } from 'react';
 import { Form, Input, Select } from 'antd';
-import { StarterProjectCreate } from '/#/abi/project';
+import { StarterProjectCreate, StarterProject } from '/#/abi/project';
 import { projectCommand } from '/@/api/project';
 import { iconData } from '/@/components/Icon';
+import { useModalInner } from '/@/components/Modal/useModal';
+import { pick } from 'lodash-es';
 
 type FieldType = StarterProjectCreate;
 
+function covertItemToForm(item: StarterProject): Partial<FieldType> {
+  let tmp: Partial<FieldType> = pick(item.meta, [
+    'name',
+    'description',
+    'icon',
+    'tags',
+    'path',
+    'exe_path',
+  ]);
+
+  tmp['executer'] = item.executer;
+
+  return tmp;
+}
+
 export function ProjectCreateModal(
-  props: BaseModelProps & { onSuccess?: () => void }
+  props: CustomModelProps & { onSuccess?: () => void }
 ) {
   const [executerOptions] = useState([{ label: '环境变量', value: 2 }]);
   const [iconOptions] = useState(
@@ -19,6 +36,15 @@ export function ProjectCreateModal(
   );
 
   const [form] = Form.useForm<FieldType>();
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  const { register } = useModalInner(props, (data) => {
+    if (data?.isUpdate) {
+      setIsUpdate(true);
+
+      form.setFieldsValue(covertItemToForm(data?.item ?? {}));
+    }
+  });
 
   const onFinish = async () => {
     try {
@@ -30,7 +56,7 @@ export function ProjectCreateModal(
   };
 
   return (
-    <BaseModal {...props} onOk={onFinish}>
+    <BaseModal {...props} register={register} onOk={onFinish}>
       <Form
         name='project_crete'
         labelCol={{ span: 4 }}

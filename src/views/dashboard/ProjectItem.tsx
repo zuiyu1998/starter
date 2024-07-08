@@ -2,15 +2,25 @@ import { StarterProject } from '/#/abi/project';
 import { Icon } from '/@/components/Icon';
 import { Button, Space } from 'antd';
 
-import { FolderOpenOutlined, DeleteOutlined } from '@ant-design/icons';
+import {
+  FolderOpenOutlined,
+  DeleteOutlined,
+  EditOutlined,
+} from '@ant-design/icons';
 
 export type ProjectItemProps = {
   item: StarterProject;
   onOpen(uuid: string): Promise<void>;
   onDelete(uuid: string): Promise<void>;
+  onEdit(item: StarterProject): Promise<void>;
 };
 
-export function ProjectItem({ item, onOpen, onDelete }: ProjectItemProps) {
+export function ProjectItem({
+  item,
+  onOpen,
+  onDelete,
+  onEdit,
+}: ProjectItemProps) {
   return (
     <div className='flex p-6 items-center bg-white mx-4 rounded-lg'>
       <div>
@@ -28,6 +38,13 @@ export function ProjectItem({ item, onOpen, onDelete }: ProjectItemProps) {
             icon={<FolderOpenOutlined />}
             onClick={() => {
               onOpen(item.meta.uuid);
+            }}
+          ></Button>
+          <Button
+            type='primary'
+            icon={<EditOutlined />}
+            onClick={() => {
+              onEdit(item);
             }}
           ></Button>
           <Button

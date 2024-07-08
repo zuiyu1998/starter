@@ -29,7 +29,11 @@ export function Dashboard() {
   }, [_getData]);
 
   function onAdd() {
-    openModal();
+    openModal({ isUpdate: false });
+  }
+
+  function onEdit(item: StarterProject) {
+    openModal({ isUpdate: true, item });
   }
 
   async function onOpen(uuid: string) {
@@ -58,6 +62,7 @@ export function Dashboard() {
               key={item.meta.uuid}
               onOpen={onOpen}
               onDelete={onDelete}
+              onEdit={onEdit}
             />
           );
         })}
