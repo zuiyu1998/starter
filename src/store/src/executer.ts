@@ -34,6 +34,6 @@ export const executerStore: StoreInterface = {
   },
 };
 
-export function getAppStoreWithOut(): ExecuterState {
+export function getExecuterStoreWithOut(): ExecuterState {
   return useExecuterStore.getState();
 }

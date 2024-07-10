@@ -105,19 +105,19 @@ export function ProjectCreateModal(
         </Form.Item>
 
         <Form.Item<FieldType>
-          label='程序路径'
-          name='exe_path'
-          rules={[{ required: true, message: '请输入程序路径' }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item<FieldType>
           label='执行器'
           name='executer'
           rules={[{ required: true, message: '请输入程序路径' }]}
         >
           <Select options={executerOptions} />
+        </Form.Item>
+
+        <Form.Item<FieldType>
+          label='程序路径'
+          name='exe_path'
+          rules={[{ required: true, message: '请输入程序路径' }]}
+        >
+          <Input />
         </Form.Item>
       </Form>
     </BaseModal>

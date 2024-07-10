@@ -58,7 +58,7 @@ function App() {
 
   if (loading) {
     return (
-      <div className='container'>
+      <div className='w-full h-full'>
         <LoadingLottie ref={playerRef} />
       </div>
     );

@@ -1,6 +1,7 @@
 import { useRef, useImperativeHandle, forwardRef } from 'react';
 import animationData from '/@/assets/lotties/loading.json';
 import { Player } from '@lottiefiles/react-lottie-player';
+import './index.less';
 
 export interface LoadingLottieRef {
   setSeeker(seek: number): void;
@@ -24,6 +25,8 @@ export const LoadingLottie = forwardRef<LoadingLottieRef, unknown>(
       []
     );
 
-    return <Player ref={playerRef} src={animationData} />;
+    return (
+      <Player ref={playerRef} src={animationData} className='h-full w-full' />
+    );
   }
 );
