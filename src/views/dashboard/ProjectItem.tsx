@@ -1,5 +1,5 @@
 import { StarterProject } from '/#/abi/project';
-import { Icon } from '/@/components/Icon';
+import { Icon, IconName } from '/@/components/Icon';
 import { Button, Space } from 'antd';
 
 import {
@@ -24,7 +24,7 @@ export function ProjectItem({
   return (
     <div className='flex p-6 items-center bg-white mx-4 rounded-lg'>
       <div>
-        <Icon icon='godot' size={40} />
+        <Icon icon={item.meta.icon as IconName} size={40} />
       </div>
       <div className='p-4 flex-1 flex flex-row items-center justify-between'>
         <div>
