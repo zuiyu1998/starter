@@ -1,6 +1,6 @@
 import { Input } from 'antd';
 import type { InputRef } from 'antd';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef, useState, useEffect } from 'react';
 import { open } from '@tauri-apps/plugin-dialog';
 import { isFunction } from 'lodash-es';
 
@@ -39,6 +39,10 @@ export function FileInput(props: FileInputProps) {
       }
     } catch (error) {}
   }
+
+  useEffect(() => {
+    setValue(props.value);
+  }, [props.value]);
 
   return (
     <Input

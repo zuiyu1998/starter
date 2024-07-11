@@ -4,7 +4,7 @@ import { ModalProps } from 'antd';
 
 export interface ModalMethod {
   openModal: (data?: any) => void;
-  closeModal: (data?: any) => void;
+  closeModal: () => void;
 }
 
 export type CustomModelProps = ModalProps & {

@@ -3,6 +3,18 @@ use api::abi::{prelude::*, uuid::Uuid};
 use tauri::{command, State};
 
 #[command(rename_all = "snake_case")]
+pub async fn update_project(
+    app_state: State<'_, AppState>,
+    update: StarterProjectUpdate,
+) -> Result<()> {
+    let app_state = app_state.inner();
+
+    app_state.update_project(update).await?;
+
+    Ok(())
+}
+
+#[command(rename_all = "snake_case")]
 pub async fn get_executer_options() -> Result<ExecuterOptions> {
     let data = AppState::get_executer_options().await?;
 

@@ -14,7 +14,7 @@ export function Dashboard() {
 
   const {
     register,
-    method: { openModal },
+    method: { openModal, closeModal },
   } = useModal();
 
   const _getData = useCallback(async () => {
@@ -49,6 +49,7 @@ export function Dashboard() {
   }
 
   function onSuccess() {
+    closeModal();
     _getData();
   }
 

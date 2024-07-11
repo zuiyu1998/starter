@@ -7,6 +7,7 @@ import { projectCommand } from '/@/api/project';
 import { iconData } from '/@/components/Icon';
 import { useModalInner } from '/@/components/Modal/useModal';
 import { pick } from 'lodash-es';
+import { useExecuterStore } from '/@/store/src/executer';
 
 type FieldType = StarterProjectCreate;
 
@@ -28,7 +29,9 @@ function covertItemToForm(item: StarterProject): Partial<FieldType> {
 export function ProjectCreateModal(
   props: CustomModelProps & { onSuccess?: () => void }
 ) {
-  const [executerOptions] = useState([{ label: '环境变量', value: 2 }]);
+  const executerStore = useExecuterStore();
+
+  const [executerOptions] = useState(executerStore.executerItems);
   const [iconOptions] = useState(
     iconData.map((item) => {
       return { label: item, value: item };
@@ -37,21 +40,34 @@ export function ProjectCreateModal(
 
   const [form] = Form.useForm<FieldType>();
   const [isUpdate, setIsUpdate] = useState(false);
+  const [_id, setId] = useState(-1);
 
   const { register } = useModalInner(props, (data) => {
     if (data?.isUpdate) {
       setIsUpdate(true);
 
+      setId(data?.item?.id ?? -1);
+
       form.setFieldsValue(covertItemToForm(data?.item ?? {}));
+    } else {
+      setIsUpdate(false);
     }
   });
 
   const onFinish = async () => {
     try {
-      const create = await form.validateFields();
-      await projectCommand.createProject(create);
+      const values = await form.validateFields();
 
-      props.onSuccess && props.onSuccess();
+      if (!isUpdate) {
+        await projectCommand.createProject(values);
+
+        props.onSuccess && props.onSuccess();
+      } else {
+        const update = Object.assign(values, { id: _id });
+
+        await projectCommand.updateProject(update);
+        props.onSuccess && props.onSuccess();
+      }
     } catch (error) {}
   };
 

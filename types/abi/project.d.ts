@@ -16,6 +16,17 @@ export type StarterProject = {
   executer: Executer;
 };
 
+export type StarterProjectUpdate = {
+  id: number;
+  path?: string;
+  exe_path?: string;
+  icon?: string;
+  name?: string;
+  description?: string;
+  executer?: number;
+  tags?: string;
+};
+
 export type StarterProjectCreate = {
   path: string;
   exe_path: string;

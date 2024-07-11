@@ -5,6 +5,7 @@ import {
   StarterProject,
   StarterProjectCreate,
   ExecuterOption,
+  StarterProjectUpdate,
 } from '/#/abi/project';
 
 async function getProjectList(page: number, page_size: number, tags?: string) {
@@ -31,10 +32,15 @@ async function getExecuterOptions() {
   return (await invoke('get_executer_options')) as ExecuterOption[];
 }
 
+async function updateProject(update: StarterProjectUpdate) {
+  return (await invoke('update_project', { update })) as ExecuterOption[];
+}
+
 export const projectCommand: ProjectRepo = {
   getProjectList: getProjectList,
   executeProject: executeProject,
   createProject: createProject,
   deleteProject: deleteProject,
   getExecuterOptions: getExecuterOptions,
+  updateProject: updateProject,
 };
