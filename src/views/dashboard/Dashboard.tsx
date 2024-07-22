@@ -6,8 +6,8 @@ import { FloatButton } from 'antd';
 import { useModal } from '/@/components/Modal';
 import { projectCommand } from '/@/api/project';
 import { FolderAddOutlined } from '@ant-design/icons';
-
 import { ProjectCreateModal } from './ProjectCreateModal';
+import { ProjectSearch } from './ProjectSearch';
 
 export function Dashboard() {
   const [list, setList] = useState<StarterProject[]>([]);
@@ -17,9 +17,9 @@ export function Dashboard() {
     method: { openModal, closeModal },
   } = useModal();
 
-  const _getData = useCallback(async () => {
+  const _getData = useCallback(async (tags?: string) => {
     try {
-      const res = await projectCommand.getProjectList(0, 50);
+      const res = await projectCommand.getProjectList(0, 50, tags);
       setList(res.data);
     } catch (error) {}
   }, []);
@@ -55,6 +55,10 @@ export function Dashboard() {
 
   return (
     <div className='h-full w-full bg-slate-50'>
+      <div className='p-4'>
+        <ProjectSearch onSearch={_getData} />
+      </div>
+
       <div className='py-4'>
         {list.map((item) => {
           return (

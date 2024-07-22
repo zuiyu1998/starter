@@ -7,6 +7,7 @@ export type StarterProjectMeta = {
   icon: string;
   name: string;
   description: string;
+  tags: string;
 };
 
 export type Executer = any;
