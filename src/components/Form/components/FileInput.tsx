@@ -1,8 +1,8 @@
-import { Input } from 'antd';
-import type { InputRef } from 'antd';
-import { ChangeEvent, useRef, useState, useEffect } from 'react';
+import { Input, Button, Space } from 'antd';
+import { ChangeEvent, useState, useEffect } from 'react';
 import { open } from '@tauri-apps/plugin-dialog';
 import { isFunction } from 'lodash-es';
+import { FileAddOutlined } from '@ant-design/icons';
 
 export type FileInputProps = {
   value?: string;
@@ -11,8 +11,6 @@ export type FileInputProps = {
 
 export function FileInput(props: FileInputProps) {
   const [value, setValue] = useState<string | undefined>(props.value);
-
-  const inputRef = useRef<InputRef>(null);
 
   function changeValue(newValue: string) {
     setValue(newValue);
@@ -28,7 +26,6 @@ export function FileInput(props: FileInputProps) {
 
   async function onFocus() {
     try {
-      inputRef.current?.blur();
       const selectd = await open({
         multiple: false,
         directory: true,
@@ -45,12 +42,10 @@ export function FileInput(props: FileInputProps) {
   }, [props.value]);
 
   return (
-    <Input
-      {...props}
-      onFocus={onFocus}
-      value={value}
-      onChange={onChange}
-      ref={inputRef}
-    />
+    <Space.Compact className='w-full'>
+      <Input {...props} value={value} onChange={onChange} />
+
+      <Button type='primary' icon={<FileAddOutlined />} onClick={onFocus} />
+    </Space.Compact>
   );
 }
